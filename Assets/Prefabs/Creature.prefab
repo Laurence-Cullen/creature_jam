@@ -54,11 +54,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1742424248650496035}
   aiDestinationSetter: {fileID: 7878104661811622701}
+  corpsePrefab: {fileID: 8562486475539731680, guid: c27ef7f16c2bc4d7fa3f47a728d1f4a9, type: 3}
   hunger: 50
   maxHunger: 100
   hungerGain: 10
   nibbleHungerLoss: 10
   targetBuffer: 0.2
+  notDead: 0
 --- !u!212 &3749503095740664960
 SpriteRenderer:
   m_ObjectHideFlags: 0

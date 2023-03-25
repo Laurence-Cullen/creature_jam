@@ -9,8 +9,11 @@ public class Creature : MonoBehaviour
     // AI Destination Setter
     public AIDestinationSetter aiDestinationSetter;
 
+    // Corpse prefab
+    public GameObject corpsePrefab;
+
     // Hunger level
-    public float hunger = 0;
+    public float hunger;
 
     // Maximum hunger level
     public float maxHunger = 100;
@@ -25,16 +28,20 @@ public class Creature : MonoBehaviour
     public float targetBuffer = 0.2f;
 
     // Destination object
-    private Transform destination;
+    private Transform _destination;
+
+    public bool notDead;
 
     // Start is called before the first frame update
     void Start()
     {
+        notDead = true;
+
         animator.SetBool("FacingLeft", false);
-        destination = new GameObject().transform;
+        _destination = new GameObject().transform;
 
         // Create transform from random location
-        aiDestinationSetter.target = destination;
+        aiDestinationSetter.target = _destination;
 
         UpdateTargetLocation(GetRandomLocation());
     }
@@ -63,15 +70,24 @@ public class Creature : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // // Check if the target location has been reached
-        if (Vector3.Distance(transform.position, aiDestinationSetter.target.position) < targetBuffer)
+        if (notDead)
         {
-            // If so, pick a new target location
-            UpdateTargetLocation(GetRandomLocation());
-        }
+            // // Check if the target location has been reached
+            if (Vector3.Distance(transform.position, aiDestinationSetter.target.position) < targetBuffer)
+            {
+                // If so, pick a new target location
+                UpdateTargetLocation(GetRandomLocation());
+            }
 
-        // Increase hunger
-        hunger += hungerGain * Time.deltaTime;
+            // Increase hunger
+            hunger += hungerGain * Time.deltaTime;
+
+            // Check if hunger is greater than max hunger set Animator state to Dead is true
+            if (hunger > maxHunger)
+            {
+                animator.SetBool("Dead", true);
+            }
+        }
     }
 
     public void NavigateToPlant(Plant plant)
@@ -93,5 +109,25 @@ public class Creature : MonoBehaviour
 
         // Set the target location to a random location
         UpdateTargetLocation(GetRandomLocation());
+    }
+
+    // Freeze the creature
+    public void Kill()
+    {
+        // Calling kill
+        Debug.Log("Kill");
+
+
+        // Disable aiDestinationSetter
+        aiDestinationSetter.enabled = false;
+
+        // Disable AIPath
+        GetComponent<AIPath>().enabled = false;
+
+        UpdateTargetLocation(transform.position);
+        notDead = false;
+
+        // Print notDead
+        Debug.Log("notDead: " + notDead);
     }
 }
