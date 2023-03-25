@@ -16,6 +16,9 @@ public class Plant : MonoBehaviour
     // Low health sprite
     public Sprite nearlyDeadSprite;
 
+    // Health recovery rate
+    public float healthRecoveryRate = 5;
+
 
     // Start is called before the first frame update
     void Start()
@@ -45,10 +48,13 @@ public class Plant : MonoBehaviour
             // set the sprite to the low health sprite
             spriteRenderer.sprite = nearlyDeadSprite;
         }
+
+        // recover health over time
+        health += Time.deltaTime * healthRecoveryRate;
     }
 
     // called when the plant is nibbled
-    public void Nibble()
+    public void Nibbled()
     {
         // reduce health by the nibble amount
         health -= nibbleAmount;
