@@ -76,12 +76,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1237760069, guid: 92802145c48371d8583d94cefbaddd07, type: 3}
+  m_Sprite: {fileID: 1330664561, guid: d8c33e042c41d751d82da8fc2849d4af, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 9.47, y: 11.550294}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -103,8 +103,10 @@ MonoBehaviour:
   health: 100
   nibbleAmount: 10
   spriteRenderer: {fileID: 0}
-  fullHealthSprite: {fileID: 1237760069, guid: 92802145c48371d8583d94cefbaddd07, type: 3}
-  nibbledSprite: {fileID: -913489013, guid: 92802145c48371d8583d94cefbaddd07, type: 3}
+  fullHealthSprite: {fileID: 1330664561, guid: d8c33e042c41d751d82da8fc2849d4af, type: 3}
+  slightlyNibbledSprite: {fileID: 1512506084, guid: d8c33e042c41d751d82da8fc2849d4af, type: 3}
+  nibbledSprite: {fileID: 1578818269, guid: d8c33e042c41d751d82da8fc2849d4af, type: 3}
+  veryNibbledSprite: {fileID: 881751064, guid: d8c33e042c41d751d82da8fc2849d4af, type: 3}
   healthRecoveryRate: 5
 --- !u!50 &2130616379260513292
 Rigidbody2D:
@@ -169,8 +171,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 1.183844, y: 1.4437499}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 9.47, y: 11.550294}
+    newSize: {x: 9.47, y: 11.550294}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
