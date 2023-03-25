@@ -5,6 +5,8 @@ using UnityEngine;
 public class CreatureMovement : MonoBehaviour
 {
     public float speed = 10;
+    public Rigidbody2D rb;
+    public float perlinSpeed = 0.001f;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,27 +17,17 @@ public class CreatureMovement : MonoBehaviour
     void Update()
     {
         Vector3 pos = transform.position;
-
-        if (Input.GetKey("w"))
-        {
-            pos.y += speed * Time.deltaTime;
-        }
-
-        if (Input.GetKey("s"))
-        {
-            pos.y -= speed * Time.deltaTime;
-        }
-
-        if (Input.GetKey("d"))
-        {
-            pos.x += speed * Time.deltaTime;
-        }
-
-        if (Input.GetKey("a"))
-        {
-            pos.x -= speed * Time.deltaTime;
-        }
-
-        transform.position = pos;
+        
+        // Add random movement
+        Vector3 vel = rb.velocity;
+        float currTime = Time.frameCount * Time.deltaTime;
+        
+        // Log output the perlin noise values
+        Debug.Log(2 * Mathf.PerlinNoise(currTime, 0) - 1);
+        Debug.Log(2 * Mathf.PerlinNoise(0, currTime) - 1);
+        vel.x = perlinSpeed * (2 * Mathf.PerlinNoise(currTime, 0) - 1);
+        vel.y = perlinSpeed * (2 * Mathf.PerlinNoise(0, currTime) - 1);
+        
+        rb.velocity = vel;
     }
 }
