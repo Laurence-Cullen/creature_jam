@@ -4,18 +4,17 @@ public class Plant : MonoBehaviour
 {
     public float maxHealth = 100;
     public float health = 100;
-    public float nibbleAmount = 10; // how much health is lost when nibbled
+    public float nibbleAmount = 25; // how much health is lost when nibbled
     public SpriteRenderer spriteRenderer;
 
-    // Sprite for when at full health
+    // Sprites for different health levels
     public Sprite fullHealthSprite;
-
-    // Low health sprite
+    public Sprite slightlyNibbledSprite;
     public Sprite nibbledSprite;
+    public Sprite veryNibbledSprite;
 
     // Health recovery rate per second
-    public float healthRecoveryRate = 0;
-
+    public float healthRecoveryRate = 2;
 
     // Start is called before the first frame update
     void Start()
@@ -27,23 +26,29 @@ public class Plant : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // if health is less than or equal to 50
-        if (health <= 50)
+        // Update sprite based on health
+        if (health > 75)
         {
-            // set the sprite to the nibbled sprite
+            spriteRenderer.sprite = fullHealthSprite;
+        }
+        else if (health > 50)
+        {
+            spriteRenderer.sprite = slightlyNibbledSprite;
+        }
+        else if (health > 25)
+        {
             spriteRenderer.sprite = nibbledSprite;
         }
         else
         {
-            // set the sprite to the full health sprite
-            spriteRenderer.sprite = fullHealthSprite;
+            spriteRenderer.sprite = veryNibbledSprite;
         }
 
         // recover health over time if health is less than max health
-        // if (health < maxHealth)
-        // {
-        //     health += healthRecoveryRate * Time.deltaTime;
-        // }
+        if (health < maxHealth)
+        {
+            health += healthRecoveryRate * Time.deltaTime;
+        }
     }
 
     // called when the plant is nibbled
