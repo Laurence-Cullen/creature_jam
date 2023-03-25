@@ -4,6 +4,9 @@ public class Vision : MonoBehaviour
 {
     // Parent
     Creature creature;
+    
+    // Navigate to plant hunger threshold
+    public float navigateToPlantHungerThreshold = 30;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +27,7 @@ public class Vision : MonoBehaviour
         if (other.gameObject.CompareTag("Plant"))
         {
             // If hunger greater than 30 then navigate to plant
-            if (creature.hunger > 30)
+            if (creature.hunger > navigateToPlantHungerThreshold)
             {
                 Plant plant = other.gameObject.GetComponent<Plant>();
 

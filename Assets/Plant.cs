@@ -3,7 +3,7 @@ using UnityEngine;
 public class Plant : MonoBehaviour
 {
     public float maxHealth = 100;
-    public float health;
+    public float health = 100;
     public float nibbleAmount = 10; // how much health is lost when nibbled
     public SpriteRenderer spriteRenderer;
 

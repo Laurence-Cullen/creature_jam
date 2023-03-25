@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 1237760069, guid: 92802145c48371d8583d94cefbaddd07, type: 3}
-  m_Color: {r: 0.056136068, g: 0.79256105, b: 0.048960056, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  health: 0
+  health: 100
   nibbleAmount: 10
   spriteRenderer: {fileID: 0}
   fullHealthSprite: {fileID: 1237760069, guid: 92802145c48371d8583d94cefbaddd07, type: 3}
