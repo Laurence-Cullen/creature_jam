@@ -51,15 +51,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f4033efe46fa4d908491aba59eadc83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visionCollider: {fileID: 0}
-  speed: 2
-  rb: {fileID: 0}
-  camera: {fileID: 0}
   aiDestinationSetter: {fileID: 7878104661811622701}
   hunger: 0
   maxHunger: 100
-  hungerGain: 1
+  hungerGain: 10
   nibbleHungerLoss: 10
+  targetBuffer: 0.2
 --- !u!212 &3749503095740664960
 SpriteRenderer:
   m_ObjectHideFlags: 0

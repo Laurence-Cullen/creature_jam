@@ -14,7 +14,7 @@ public class Plant : MonoBehaviour
     public Sprite nibbledSprite;
 
     // Health recovery rate per second
-    public float healthRecoveryRate = 5;
+    public float healthRecoveryRate = 0;
 
 
     // Start is called before the first frame update
@@ -40,10 +40,10 @@ public class Plant : MonoBehaviour
         }
 
         // recover health over time if health is less than max health
-        if (health < maxHealth)
-        {
-            health += healthRecoveryRate * Time.deltaTime;
-        }
+        // if (health < maxHealth)
+        // {
+        //     health += healthRecoveryRate * Time.deltaTime;
+        // }
     }
 
     // called when the plant is nibbled

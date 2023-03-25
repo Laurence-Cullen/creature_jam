@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Plant
+  - Water
   layers:
   - Default
   - TransparentFX

@@ -18,7 +18,7 @@ public class Mouth : MonoBehaviour
     {
     }
 
-    void OnCollisionEnter2D(Collision2D other)
+    void OnTriggerStay2D(Collider2D other)
     {
         // If the other collider is a plant nibble it
         if (other.gameObject.CompareTag("Plant"))
