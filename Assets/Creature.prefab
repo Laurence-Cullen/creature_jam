@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7878104661811622701}
   - component: {fileID: 2053254120881516146}
   - component: {fileID: 4904603236319464732}
+  - component: {fileID: 1742424248650496035}
   m_Layer: 0
   m_Name: Creature
   m_TagString: Untagged
@@ -37,7 +38,7 @@ Transform:
   - {fileID: 3338201658752570193}
   - {fileID: 2734371636484981679}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2079876284858562133
 MonoBehaviour:
@@ -51,8 +52,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f4033efe46fa4d908491aba59eadc83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 1742424248650496035}
   aiDestinationSetter: {fileID: 7878104661811622701}
-  hunger: 0
+  hunger: 50
   maxHunger: 100
   hungerGain: 10
   nibbleHungerLoss: 10
@@ -98,12 +100,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 32e6d2870e6ce7a26a8a6adace9394d9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 60b7d672a6202098d9538b2b11effc75, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.4285715, y: 1.4285715}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -146,7 +148,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1.4285715, y: 1.4285715}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 1.4285715, y: 1.4285715}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -167,7 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  target: {fileID: 381724542673806892}
+  target: {fileID: 0}
 --- !u!114 &2053254120881516146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,6 +240,27 @@ MonoBehaviour:
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
   constrainInsideGraph: 0
+--- !u!95 &1742424248650496035
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3369614858143274295}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d5d1357be86279a94afe1aa8d693111f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5118284766461921352
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,7 +328,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.99
+  m_Radius: 2.5
 --- !u!114 &4174347719155896897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -381,12 +404,12 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.75
+  m_Radius: 1.31
 --- !u!114 &7158957635975949257
 MonoBehaviour:
   m_ObjectHideFlags: 0

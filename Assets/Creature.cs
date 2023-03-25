@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class Creature : MonoBehaviour
 {
+    // Animator
+    public Animator animator;
+
     // AI Destination Setter
     public AIDestinationSetter aiDestinationSetter;
 
@@ -27,6 +30,7 @@ public class Creature : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        animator.SetBool("FacingLeft", false);
         destination = new GameObject().transform;
 
         // Create transform from random location
