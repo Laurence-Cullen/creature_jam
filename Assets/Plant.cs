@@ -10,13 +10,10 @@ public class Plant : MonoBehaviour
     // Sprite for when at full health
     public Sprite fullHealthSprite;
 
-    // Mid health sprite
-    public Sprite midHealthSprite;
-
     // Low health sprite
-    public Sprite nearlyDeadSprite;
+    public Sprite nibbledSprite;
 
-    // Health recovery rate
+    // Health recovery rate per second
     public float healthRecoveryRate = 5;
 
 
@@ -30,27 +27,23 @@ public class Plant : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // if health is greater than 66% of max health
-        if (health > maxHealth * 0.66f)
+        // if health is less than or equal to 50
+        if (health <= 50)
+        {
+            // set the sprite to the nibbled sprite
+            spriteRenderer.sprite = nibbledSprite;
+        }
+        else
         {
             // set the sprite to the full health sprite
             spriteRenderer.sprite = fullHealthSprite;
         }
-        // if health is greater than 33% of max health
-        else if (health > maxHealth * 0.33f)
-        {
-            // set the sprite to the mid health sprite
-            spriteRenderer.sprite = midHealthSprite;
-        }
-        // if health is less than or equal to 33% of max health
-        else
-        {
-            // set the sprite to the low health sprite
-            spriteRenderer.sprite = nearlyDeadSprite;
-        }
 
-        // recover health over time
-        health += Time.deltaTime * healthRecoveryRate;
+        // recover health over time if health is less than max health
+        if (health < maxHealth)
+        {
+            health += healthRecoveryRate * Time.deltaTime;
+        }
     }
 
     // called when the plant is nibbled

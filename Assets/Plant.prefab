@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -2305108513813252676}
   m_Layer: 0
   m_Name: Plant
-  m_TagString: Untagged
+  m_TagString: Plant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,6 +102,5 @@ MonoBehaviour:
   nibbleAmount: 10
   spriteRenderer: {fileID: 0}
   fullHealthSprite: {fileID: 21300000, guid: f18bd736aafb17411898a208ecfcaf7f, type: 3}
-  midHealthSprite: {fileID: 0}
-  nearlyDeadSprite: {fileID: 0}
+  nibbledSprite: {fileID: 0}
   healthRecoveryRate: 5
