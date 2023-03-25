@@ -23,10 +23,14 @@ public class Vision : MonoBehaviour
         // If the other collider is a plant nibble it
         if (other.gameObject.CompareTag("Plant"))
         {
-            Plant plant = other.gameObject.GetComponent<Plant>();
-            
-            // NavigateToPlant
-            creature.NavigateToPlant(plant);
+            // If hunger greater than 30 then navigate to plant
+            if (creature.hunger > 30)
+            {
+                Plant plant = other.gameObject.GetComponent<Plant>();
+
+                // Call NavigateToPlant on parent
+                creature.NavigateToPlant(plant);
+            }
         }
     }
 }

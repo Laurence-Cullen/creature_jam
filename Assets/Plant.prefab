@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 1237760069, guid: 92802145c48371d8583d94cefbaddd07, type: 3}
   m_Color: {r: 0.056136068, g: 0.79256105, b: 0.048960056, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -101,6 +101,6 @@ MonoBehaviour:
   health: 0
   nibbleAmount: 10
   spriteRenderer: {fileID: 0}
-  fullHealthSprite: {fileID: 21300000, guid: f18bd736aafb17411898a208ecfcaf7f, type: 3}
-  nibbledSprite: {fileID: 0}
+  fullHealthSprite: {fileID: 1237760069, guid: 92802145c48371d8583d94cefbaddd07, type: 3}
+  nibbledSprite: {fileID: -913489013, guid: 92802145c48371d8583d94cefbaddd07, type: 3}
   healthRecoveryRate: 5
