@@ -687,6 +687,7 @@ GameObject:
   - component: {fileID: 734501639}
   - component: {fileID: 734501638}
   - component: {fileID: 734501637}
+  - component: {fileID: 734501640}
   m_Layer: 5
   m_Name: EnterYourNameInput
   m_TagString: Untagged
@@ -794,7 +795,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 734501640}
+        m_TargetAssemblyTypeName: Persistent, Assembly-CSharp
+        m_MethodName: UpdatePlayerName
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnTouchScreenKeyboardStatusChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -851,6 +864,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 734501635}
   m_CullTransparentMesh: 1
+--- !u!114 &734501640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 734501635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b631da2ea0823bc8b8f26a1288f071d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerName: Player
+  nameCard: {fileID: 0}
+  numCreatures: 10
+  numPlants: 10
+  cannibalism: 1
+  creaturesBorn: 0
+  creaturesEaten: 0
+  creaturesDied: 0
+  generations: 1
 --- !u!1 &904474126
 GameObject:
   m_ObjectHideFlags: 0
@@ -1360,6 +1394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerName: Player
+  nameCard: {fileID: 1219278770}
   numCreatures: 10
   numPlants: 10
   cannibalism: 1
@@ -1470,7 +1505,7 @@ GameObject:
   - component: {fileID: 1219278771}
   - component: {fileID: 1219278770}
   m_Layer: 5
-  m_Name: YourNameOnCard
+  m_Name: NameCard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1516,7 +1551,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Laurence Cullen
+  m_text: Dr Chegus
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dd3621931082ccda0b5cdfd800f4f0bf, type: 2}
   m_sharedMaterial: {fileID: 3095039842229555895, guid: dd3621931082ccda0b5cdfd800f4f0bf, type: 2}
