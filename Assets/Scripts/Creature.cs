@@ -55,11 +55,10 @@ public class Creature : MonoBehaviour
     // Heart prefab
     public GameObject heartPrefab;
 
-    private static readonly int Propositioning = Animator.StringToHash("Propositioning");
     private static readonly int Eating = Animator.StringToHash("Eating");
     private static readonly int Dead = Animator.StringToHash("Dead");
-    private static readonly int Reproducing = Animator.StringToHash("Reproducing");
     private static readonly int FacingLeft = Animator.StringToHash("FacingLeft");
+    private static readonly int Idling = Animator.StringToHash("Idling");
 
     // Start is called before the first frame update
     void Start()
@@ -205,9 +204,6 @@ public class Creature : MonoBehaviour
         // Heart emote
         HeartEmote();
 
-        // Set animation to Reproducing
-        animator.SetBool(Propositioning, true);
-
         // Reproduce
         Debug.Log("Propositioning");
 
@@ -239,9 +235,6 @@ public class Creature : MonoBehaviour
     // Stop propositioning
     public void StopPropositioning()
     {
-        // Set animation to not Propositioning
-        animator.SetBool(Propositioning, false);
-
         // If we have a partner continue to idle
         if (partner != null)
         {
@@ -283,7 +276,7 @@ public class Creature : MonoBehaviour
         BigHeartEmote();
 
         // Set animation to idling
-        animator.SetBool(Reproducing, true);
+        animator.SetBool(Idling, true);
 
         // Set the target location to position of partner
         UpdateTargetLocation(otherCreature.transform.position);
@@ -310,7 +303,7 @@ public class Creature : MonoBehaviour
     public void StopReproducing()
     {
         // Set animation to not Reproducing
-        animator.SetBool(Reproducing, false);
+        animator.SetBool(Idling, false);
 
         // Stop idling
         idling = false;
