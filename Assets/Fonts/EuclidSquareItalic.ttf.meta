@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: 0524b0261e58c1bc0b41a4911bf91f1a
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Euclid Square
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 54d959e8b88de9ee1bcde41f425e31fd, type: 3}
+  - {fileID: 12800000, guid: d1050d99b4dfcc6b6b69c6ffd329d42d, type: 3}
+  - {fileID: 12800000, guid: e098d2c43272251ffbe2abec86410dea, type: 3}
+  - {fileID: 12800000, guid: 6343e4df491fc05e096142265f5ee522, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

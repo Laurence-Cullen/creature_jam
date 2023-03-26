@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: d4618154b286f1ad8b6c820ecd2bfe3d
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Euclid Circular B
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 3236aebb9747a04958c493b780dd61a7, type: 3}
+  - {fileID: 12800000, guid: 21a5d02969d53655b9c6d84ef931fb82, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

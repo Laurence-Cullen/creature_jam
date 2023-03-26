@@ -73,7 +73,7 @@ public class Creature : MonoBehaviour
 
         notDead = true;
 
-        // animator.SetBool(FacingLeft, false);
+        // TODO: Stop creating new game objects
         _destination = new GameObject().transform;
 
         // Create transform from random location
