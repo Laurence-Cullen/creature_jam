@@ -25,6 +25,10 @@ public class Creature : MonoBehaviour
     // Hunger loss from nibbling a plant
     public float nibbleHungerLoss = 10;
 
+    // Reproduction hunger threshold
+    public float reproductionHungerThreshold = 50;
+    public float reproductionHungerCost = 30;
+
     // Target buffer
     public float targetBuffer = 0.2f;
 
@@ -36,12 +40,30 @@ public class Creature : MonoBehaviour
     // Idling
     public bool idling = false;
 
+    // Incubation period, time before creature can reproduce
+    public float incubationPeriod = 15;
+
+    // Time since last reproduction
+    public float timeSinceLastReproduction = 0;
+
+    // Reproduction max distance
+    public float reproductionMaxDistance = 0.5f;
+
+    // Romantic partner
+    public Creature partner;
+
+    private static readonly int Propositioning = Animator.StringToHash("Propositioning");
+    private static readonly int Eating = Animator.StringToHash("Eating");
+    private static readonly int Dead = Animator.StringToHash("Dead");
+    private static readonly int Reproducing = Animator.StringToHash("Reproducing");
+    private static readonly int FacingLeft = Animator.StringToHash("FacingLeft");
+
     // Start is called before the first frame update
     void Start()
     {
         notDead = true;
 
-        animator.SetBool("FacingLeft", false);
+        animator.SetBool(FacingLeft, false);
         _destination = new GameObject().transform;
 
         // Create transform from random location
@@ -82,14 +104,25 @@ public class Creature : MonoBehaviour
                 // If so, pick a new target location
                 UpdateTargetLocation(GetRandomLocation());
             }
+        }
 
-            // Increase hunger
-            hunger += hungerGain * Time.deltaTime;
+        // Increase hunger
+        hunger += hungerGain * Time.deltaTime;
 
-            // Check if hunger is greater than max hunger set Animator state to Dead is true
-            if (hunger > maxHunger)
+        // Check if hunger is greater than max hunger set Animator state to Dead is true
+        if (hunger > maxHunger)
+        {
+            animator.SetBool(Dead, true);
+        }
+
+        // If we have a partner move check if we are close enough to reproduce
+        if (partner != null)
+        {
+            // Check if we are close enough to reproduce
+            if (DistanceToCreature(partner) < reproductionMaxDistance)
             {
-                animator.SetBool("Dead", true);
+                // If so, reproduce
+                Reproduce(partner);
             }
         }
     }
@@ -98,7 +131,7 @@ public class Creature : MonoBehaviour
     public void Nibble(Edible edible)
     {
         // Set animation to Eating
-        animator.SetBool("Eating", true);
+        animator.SetBool(Eating, true);
 
         // Nibble the edible
         edible.Nibbled();
@@ -116,26 +149,141 @@ public class Creature : MonoBehaviour
         idling = true;
 
         // Wait for 1 seconds
-        Invoke("StopEating", 1);
+        Invoke(nameof(StopEating), 1);
     }
 
     // Stop eating
     public void StopEating()
     {
         // Set animation to Eating
-        animator.SetBool("Eating", false);
+        animator.SetBool(Eating, false);
 
         // Stop idling
         idling = false;
     }
 
-    // Freeze the creature
+    // Accept a proposition
+    public void AcceptProposition(Creature otherCreature)
+    {
+        idling = true;
+        // Set the target location to other creature position
+        UpdateTargetLocation(otherCreature.transform.position);
+        partner = otherCreature;
+    }
+
+    // Proposition another creature
+    public void Proposition(Creature otherCreature)
+    {
+        // Set animation to Reproducing
+        animator.SetBool(Propositioning, true);
+
+        // Reproduce
+        Debug.Log("Propositioning");
+
+        // Set the target location to other creature position
+        UpdateTargetLocation(otherCreature.transform.position);
+
+        idling = true;
+
+        // Check if other creature is ready to reproduce
+        if (otherCreature.ReadyToReproduce())
+        {
+            // Accept proposition
+            otherCreature.AcceptProposition(this);
+
+            partner = otherCreature;
+        }
+
+        // Wait for 1 seconds
+        Invoke(nameof(StopPropositioning), 1);
+    }
+
+    // Check distance between two creatures
+    public float DistanceToCreature(Creature otherCreature)
+    {
+        // Return distance between other creature and this creature
+        return Vector3.Distance(transform.position, otherCreature.transform.position);
+    }
+
+    // Stop propositioning
+    public void StopPropositioning()
+    {
+        // Set animation to not Propositioning
+        animator.SetBool(Propositioning, false);
+
+        // If we have a partner continue to idle
+        if (partner != null)
+        {
+            idling = true;
+        }
+        else
+        {
+            // Stop idling
+            idling = false;
+        }
+    }
+
+    // Check if ready to reproduce
+    public bool ReadyToReproduce()
+    {
+        // If not dead
+        if (notDead)
+        {
+            // Check if hunger is greater than reproduction hunger threshold
+            if (hunger < reproductionHungerThreshold)
+            {
+                // Check if incubation period has passed
+                if (timeSinceLastReproduction > incubationPeriod)
+                {
+                    // Return true
+                    return true;
+                }
+            }
+        }
+
+        // Return false
+        return false;
+    }
+
+    // Reproduce
+    public void Reproduce(Creature otherCreature)
+    {
+        // Set animation to Reproducing
+        animator.SetBool(Reproducing, true);
+
+        // Set the target location to position of partner
+        UpdateTargetLocation(otherCreature.transform.position);
+
+        partner = null;
+        otherCreature.partner = null;
+
+        // Idle
+        idling = true;
+        otherCreature.idling = true;
+
+        // Add hunger cost
+        hunger += reproductionHungerCost;
+
+        // Reset time since last reproduction
+        timeSinceLastReproduction = 0;
+        otherCreature.timeSinceLastReproduction = 0;
+
+        // Wait for 1 seconds
+        Invoke(nameof(StopReproducing), 1);
+    }
+
+    // Stop reproducing
+    public void StopReproducing()
+    {
+        // Set animation to not Reproducing
+        animator.SetBool(Reproducing, false);
+
+        // Stop idling
+        idling = false;
+    }
+
     public void Kill()
     {
-        // Calling kill
-        Debug.Log("Kill");
-
-
         // Disable aiDestinationSetter
         aiDestinationSetter.enabled = false;
 

@@ -25,8 +25,16 @@ public class Vision : MonoBehaviour
     // Called when the vision collider enters another collider
     void OnTriggerStay2D(Collider2D other)
     {
-        // If the other collider edible nibble it
-        if (other.gameObject.CompareTag("Edible"))
+        // If other collider is a creature
+        if (other.gameObject.CompareTag("Creature"))
+        {
+            if (creature.ReadyToReproduce())
+            {
+                creature.Proposition(other.gameObject.GetComponent<Creature>());
+            }
+        }
+        // If the other collider is edible nibble it
+        else if (other.gameObject.CompareTag("Edible"))
         {
             // If hunger greater than 30 then navigate to plant
             if (creature.hunger > navigateToPlantHungerThreshold)
