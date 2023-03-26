@@ -68,6 +68,9 @@ public class Creature : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Randomise hunger between 0 and 50
+        hunger = Random.Range(0, 50);
+
         notDead = true;
 
         // animator.SetBool(FacingLeft, false);

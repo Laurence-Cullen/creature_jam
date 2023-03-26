@@ -15,17 +15,17 @@ public class Plant : Edible
     public float dormancyPeriod = 10;
 
     // Dormant
-    private bool _dormant;
+    public bool dormant;
 
     // Time dormant
-    private float _timeDormant;
+    public float timeDormant;
 
     // Start is called before the first frame update
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        _dormant = false;
-        _timeDormant = 0;
+        dormant = false;
+        timeDormant = 0;
     }
 
     // Update is called once per frame
@@ -50,17 +50,18 @@ public class Plant : Edible
         }
 
         // If dormant
-        if (_dormant)
+        if (dormant)
         {
             // Increment time dormant
-            _timeDormant += Time.deltaTime;
+            timeDormant += Time.deltaTime;
 
             // If time dormant greater than dormancy period
-            if (_timeDormant > dormancyPeriod)
+            if (timeDormant > dormancyPeriod)
             {
                 // Leave dormancy
-                _dormant = false;
+                dormant = false;
                 nutrition = 30;
+                timeDormant = 0;
             }
         }
         else
@@ -75,7 +76,18 @@ public class Plant : Edible
         nutrition -= nibbleAmount;
         if (nutrition <= 0)
         {
-            _dormant = true;
+            dormant = true;
         }
+    }
+
+    // Nibbleable 
+    public new bool Nibbleable()
+    {
+        if (dormant)
+        {
+            return false;
+        }
+
+        return nutrition > 0;
     }
 }
