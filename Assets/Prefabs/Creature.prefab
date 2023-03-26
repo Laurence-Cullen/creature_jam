@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 1742424248650496035}
   m_Layer: 0
   m_Name: Creature
-  m_TagString: Untagged
+  m_TagString: Creature
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -55,17 +55,15 @@ MonoBehaviour:
   animator: {fileID: 1742424248650496035}
   aiDestinationSetter: {fileID: 7878104661811622701}
   corpsePrefab: {fileID: 8562486475539731680, guid: c27ef7f16c2bc4d7fa3f47a728d1f4a9, type: 3}
-  hunger: 50
+  hunger: 20
   maxHunger: 100
-  hungerGain: 10
+  hungerGain: 5
   nibbleHungerLoss: 10
   reproductionHungerThreshold: 50
   reproductionHungerCost: 30
   targetBuffer: 0.2
   notDead: 0
-  idling: 0
   incubationPeriod: 15
-  timeSinceLastReproduction: 0
   reproductionMaxDistance: 0.5
   partner: {fileID: 0}
   heartPrefab: {fileID: 4645024256981364194, guid: e82c3843323cba0cfb31c8a8f3ebd640, type: 3}

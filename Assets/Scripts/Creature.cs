@@ -38,13 +38,13 @@ public class Creature : MonoBehaviour
     public bool notDead;
 
     // Idling
-    public bool idling = false;
+    private bool _idling;
 
     // Incubation period, time before creature can reproduce
     public float incubationPeriod = 15;
 
     // Time since last reproduction
-    public float timeSinceLastReproduction = 0;
+    private float _timeSinceLastReproduction;
 
     // Reproduction max distance
     public float reproductionMaxDistance = 0.5f;
@@ -56,8 +56,10 @@ public class Creature : MonoBehaviour
     public GameObject heartPrefab;
 
     private static readonly int Eating = Animator.StringToHash("Eating");
+
     private static readonly int Dead = Animator.StringToHash("Dead");
-    private static readonly int FacingLeft = Animator.StringToHash("FacingLeft");
+
+    // private static readonly int FacingLeft = Animator.StringToHash("FacingLeft");
     private static readonly int Idling = Animator.StringToHash("Idling");
 
     // Start is called before the first frame update
@@ -65,7 +67,7 @@ public class Creature : MonoBehaviour
     {
         notDead = true;
 
-        animator.SetBool(FacingLeft, false);
+        // animator.SetBool(FacingLeft, false);
         _destination = new GameObject().transform;
 
         // Create transform from random location
@@ -98,7 +100,7 @@ public class Creature : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (notDead && !idling)
+        if (notDead && !_idling)
         {
             // // Check if the target location has been reached
             if (Vector3.Distance(transform.position, aiDestinationSetter.target.position) < targetBuffer)
@@ -148,7 +150,7 @@ public class Creature : MonoBehaviour
         UpdateTargetLocation(edible.transform.position);
 
         // Idle
-        idling = true;
+        _idling = true;
 
         // Wait for 1 seconds
         Invoke(nameof(StopEating), 1);
@@ -161,7 +163,7 @@ public class Creature : MonoBehaviour
         animator.SetBool(Eating, false);
 
         // Stop idling
-        idling = false;
+        _idling = false;
     }
 
     // Accept a proposition
@@ -169,7 +171,7 @@ public class Creature : MonoBehaviour
     {
         HeartEmote();
 
-        idling = true;
+        _idling = true;
         // Set the target location to other creature position
         UpdateTargetLocation(otherCreature.transform.position);
         partner = otherCreature;
@@ -210,7 +212,7 @@ public class Creature : MonoBehaviour
         // Set the target location to other creature position
         UpdateTargetLocation(otherCreature.transform.position);
 
-        idling = true;
+        _idling = true;
 
         // Check if other creature is ready to reproduce
         if (otherCreature.ReadyToReproduce())
@@ -238,12 +240,12 @@ public class Creature : MonoBehaviour
         // If we have a partner continue to idle
         if (partner != null)
         {
-            idling = true;
+            _idling = true;
         }
         else
         {
             // Stop idling
-            idling = false;
+            _idling = false;
         }
     }
 
@@ -257,7 +259,7 @@ public class Creature : MonoBehaviour
             if (hunger < reproductionHungerThreshold)
             {
                 // Check if incubation period has passed
-                if (timeSinceLastReproduction > incubationPeriod)
+                if (_timeSinceLastReproduction > incubationPeriod)
                 {
                     // Return true
                     return true;
@@ -285,15 +287,15 @@ public class Creature : MonoBehaviour
         otherCreature.partner = null;
 
         // Idle
-        idling = true;
-        otherCreature.idling = true;
+        _idling = true;
+        otherCreature._idling = true;
 
         // Add hunger cost
         hunger += reproductionHungerCost;
 
         // Reset time since last reproduction
-        timeSinceLastReproduction = 0;
-        otherCreature.timeSinceLastReproduction = 0;
+        _timeSinceLastReproduction = 0;
+        otherCreature._timeSinceLastReproduction = 0;
 
         // Wait for 1 seconds
         Invoke(nameof(StopReproducing), 1);
@@ -306,7 +308,7 @@ public class Creature : MonoBehaviour
         animator.SetBool(Idling, false);
 
         // Stop idling
-        idling = false;
+        _idling = false;
     }
 
     public void Kill()
