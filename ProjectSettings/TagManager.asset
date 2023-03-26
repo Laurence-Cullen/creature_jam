@@ -9,6 +9,7 @@ TagManager:
   - Edible
   - Creature
   - Corpse
+  - Baby
   layers:
   - Default
   - TransparentFX

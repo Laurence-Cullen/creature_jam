@@ -76,22 +76,7 @@ public class Creature : MonoBehaviour
         // Create transform from random location
         aiDestinationSetter.target = _destination;
 
-        UpdateTargetLocation(GetRandomLocation());
-    }
-
-    Vector3 GetRandomLocation()
-    {
-        var grid = AstarPath.active.data.gridGraph;
-
-        var randomNode = grid.nodes[Random.Range(0, grid.nodes.Length)];
-
-        // Check if random node is walkable
-        while (!randomNode.Walkable)
-        {
-            randomNode = grid.nodes[Random.Range(0, grid.nodes.Length)];
-        }
-
-        return (Vector3)randomNode.position;
+        UpdateTargetLocation(Controller.GetRandomWalkableLocation());
     }
 
     public void UpdateTargetLocation(Vector3 targetLocation)
@@ -109,7 +94,7 @@ public class Creature : MonoBehaviour
             if (Vector3.Distance(transform.position, aiDestinationSetter.target.position) < targetBuffer)
             {
                 // If so, pick a new target location
-                UpdateTargetLocation(GetRandomLocation());
+                UpdateTargetLocation(Controller.GetRandomWalkableLocation());
             }
         }
 
