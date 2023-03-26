@@ -7,6 +7,9 @@ public class Creature : MonoBehaviour
     // Animator
     public Animator animator;
 
+    // Persistent
+    public Persistent persistent;
+
     // AI Destination Setter
     public AIDestinationSetter aiDestinationSetter;
 
@@ -68,6 +71,11 @@ public class Creature : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Find persistent
+        persistent = GameObject.FindWithTag("Persistent").GetComponent<Persistent>();
+
+        persistent.numCreatures++;
+
         // Randomise hunger between 0 and 50
         hunger = Random.Range(0, 50);
 
@@ -297,6 +305,8 @@ public class Creature : MonoBehaviour
         // Instantiate baby
         Instantiate(babyPrefab, transform.position, Quaternion.identity);
 
+        persistent.creaturesBorn++;
+
         // Wait for 1 seconds
         Invoke(nameof(StopReproducing), 1);
     }
@@ -313,6 +323,8 @@ public class Creature : MonoBehaviour
 
     public void Kill()
     {
+        persistent.creaturesDied++;
+
         // Disable aiDestinationSetter
         aiDestinationSetter.enabled = false;
 

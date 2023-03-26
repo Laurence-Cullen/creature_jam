@@ -10,6 +10,7 @@ TagManager:
   - Creature
   - Corpse
   - Baby
+  - Persistent
   layers:
   - Default
   - TransparentFX

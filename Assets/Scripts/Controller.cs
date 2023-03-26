@@ -2,11 +2,8 @@ using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
-    // Plant multiplier
-    public float plantMultiplier = 5;
-
     // Plant density
-    public float plantDensity = 0;
+    public float numPlants = 0;
 
     // Number of creatures
     public int numCreatures = 0;
@@ -74,8 +71,6 @@ public class Controller : MonoBehaviour
     // Populate map with plants and creatures
     public void PopulateMap()
     {
-        int numPlants = (int)(plantDensity * plantMultiplier);
-
         // Spawn plants
         for (int i = 0; i < numPlants; i++)
         {

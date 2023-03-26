@@ -8,7 +8,7 @@ public class PlantSlider : MonoBehaviour
     public void OnSliderChanged(float value)
     {
         // Set plant density to value
-        controller.plantDensity = value;
+        controller.numPlants = value;
 
         // Clear map
         controller.ClearMap();
