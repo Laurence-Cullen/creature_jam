@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class StartButton : MonoBehaviour
 {
@@ -9,6 +6,6 @@ public class StartButton : MonoBehaviour
     public void OnClick()
     {
         // Set game timescale to 0
-        Time.timeScale = 0;
+        Time.timeScale = 1;
     }
 }

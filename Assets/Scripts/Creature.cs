@@ -91,7 +91,7 @@ public class Creature : MonoBehaviour
         if (notDead && !_idling)
         {
             // // Check if the target location has been reached
-            if (Vector3.Distance(transform.position, aiDestinationSetter.target.position) < targetBuffer)
+            if (Vector2.Distance(transform.position, aiDestinationSetter.target.position) < targetBuffer)
             {
                 // If so, pick a new target location
                 UpdateTargetLocation(Controller.GetRandomWalkableLocation());

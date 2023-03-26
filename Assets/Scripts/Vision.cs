@@ -25,20 +25,11 @@ public class Vision : MonoBehaviour
     // Called when the vision collider enters another collider
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Print other collider name
-        Debug.Log("Trigger enter: " + other.gameObject.name);
-
         // If other collider is a creature
         if (other.gameObject.CompareTag("Creature"))
         {
-            // Other creature spotted
-            Debug.Log("Creature spotted");
-
             if (creature.ReadyToReproduce())
             {
-                // I'm ready to reproduce
-                Debug.Log("I'm ready to reproduce");
-
                 creature.Proposition(other.gameObject.GetComponent<Creature>());
             }
         }
@@ -47,10 +38,6 @@ public class Vision : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-        // Print other collider name
-        Debug.Log("Trigger stay: " + other.gameObject.name);
-
-
         // If the other collider is Corpse or Plant and creature is not idle
         if ((other.gameObject.CompareTag("Corpse") || other.gameObject.CompareTag("Plant")) && !creature.IsIdle())
         {

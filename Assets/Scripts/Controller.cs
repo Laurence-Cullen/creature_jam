@@ -80,10 +80,15 @@ public class Controller : MonoBehaviour
             // Randomly select one of 5 plant prefabs
             GameObject plantPrefab = plantPrefabs[Random.Range(0, plantPrefabs.Length)];
 
+            Vector3 plantPosition = AddNoise(GetRandomWalkableLocation(), 0.1f);
+
+            // Add Z + 1 to plant position
+            plantPosition.z += 1;
+
             // Instantiate plant prefab at random location
             Instantiate(
                 plantPrefab,
-                AddNoise(GetRandomWalkableLocation(), 0.1f),
+                plantPosition,
                 Quaternion.identity
             );
         }
