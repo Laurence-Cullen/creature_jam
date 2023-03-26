@@ -22,6 +22,12 @@ namespace DefaultNamespace
             nutrition = maxNutrition;
         }
 
+        void Start()
+        {
+            nutrition = maxNutrition;
+        }
+
+
         // Update
         void Update()
         {

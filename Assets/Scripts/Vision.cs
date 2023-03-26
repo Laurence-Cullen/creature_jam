@@ -60,7 +60,7 @@ public class Vision : MonoBehaviour
                 Plant plant = other.gameObject.GetComponent<Plant>();
 
                 // If plant is not nibbled
-                if (!plant.Nibbleable())
+                if (plant.Nibbleable())
                 {
                     // If hunger greater than 30 then navigate to plant
                     if (creature.hunger > navigateToPlantHungerThreshold)

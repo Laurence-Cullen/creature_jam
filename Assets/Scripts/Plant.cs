@@ -24,6 +24,8 @@ public class Plant : Edible
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        _dormant = false;
+        _timeDormant = 0;
     }
 
     // Update is called once per frame
@@ -58,6 +60,7 @@ public class Plant : Edible
             {
                 // Leave dormancy
                 _dormant = false;
+                nutrition = 30;
             }
         }
         else

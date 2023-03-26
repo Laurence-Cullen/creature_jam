@@ -136,20 +136,28 @@ public class Creature : MonoBehaviour
         _timeSinceLastReproduction += Time.deltaTime;
     }
 
-    // Nibble an Edible
+    // Nibble plant
+    public void NibblePlant(Plant plant)
+    {
+        plant.Nibbled();
+        Nibble(plant);
+    }
+
+    // Nibble corpse
+    public void NibbleCorpse(Corpse corpse)
+    {
+        corpse.Nibbled();
+        Nibble(corpse);
+    }
+
+    // Nibble a subclass of Edible
     public void Nibble(Edible edible)
     {
         // Set animation to Eating
         animator.SetBool(Eating, true);
 
-        // Nibble the edible
-        edible.Nibbled();
-
         // Reduce hunger
         hunger -= nibbleHungerLoss;
-
-        // Nibbled edible
-        Debug.Log("Nibbled edible");
 
         // Set the target location to edible position
         UpdateTargetLocation(edible.transform.position);
@@ -213,9 +221,6 @@ public class Creature : MonoBehaviour
         // Heart emote
         HeartEmote();
 
-        // Reproduce
-        Debug.Log("Propositioning");
-
         // Set the target location to other creature position
         UpdateTargetLocation(otherCreature.transform.position);
 
@@ -224,7 +229,6 @@ public class Creature : MonoBehaviour
         {
             // Accept proposition
             otherCreature.AcceptProposition(this);
-
             partner = otherCreature;
         }
 
@@ -303,10 +307,7 @@ public class Creature : MonoBehaviour
         otherCreature._timeSinceLastReproduction = 0;
 
         // Instantiate baby
-        var baby = Instantiate(
-            babyPrefab,
-            transform.position + new Vector3(0, -0.4f, 0), Quaternion.identity
-        );
+        Instantiate(babyPrefab, transform.position, Quaternion.identity);
 
         // Wait for 1 seconds
         Invoke(nameof(StopReproducing), 1);
@@ -332,9 +333,6 @@ public class Creature : MonoBehaviour
 
         UpdateTargetLocation(transform.position);
         notDead = false;
-
-        // Print notDead
-        Debug.Log("notDead: " + notDead);
     }
 
     // IsIdle
