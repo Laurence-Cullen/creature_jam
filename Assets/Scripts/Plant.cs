@@ -11,6 +11,15 @@ public class Plant : Edible
     public Sprite nibbledSprite;
     public Sprite veryNibbledSprite;
 
+    // Dormancy period, in which plant stops regrowing for a time
+    public float dormancyPeriod = 10;
+
+    // Dormant
+    private bool _dormant;
+
+    // Time dormant
+    private float _timeDormant;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +47,32 @@ public class Plant : Edible
             spriteRenderer.sprite = veryNibbledSprite;
         }
 
-        RecoverNutrition();
+        // If dormant
+        if (_dormant)
+        {
+            // Increment time dormant
+            _timeDormant += Time.deltaTime;
+
+            // If time dormant greater than dormancy period
+            if (_timeDormant > dormancyPeriod)
+            {
+                // Leave dormancy
+                _dormant = false;
+            }
+        }
+        else
+        {
+            // Recover nutrition
+            RecoverNutrition();
+        }
+    }
+
+    public new void Nibbled()
+    {
+        nutrition -= nibbleAmount;
+        if (nutrition <= 0)
+        {
+            _dormant = true;
+        }
     }
 }

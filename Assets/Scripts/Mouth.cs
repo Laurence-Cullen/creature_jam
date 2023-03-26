@@ -1,4 +1,3 @@
-using DefaultNamespace;
 using UnityEngine;
 
 public class Mouth : MonoBehaviour
@@ -25,11 +24,15 @@ public class Mouth : MonoBehaviour
             // If creature hunger greater than nibbleHungerLoss then nibble
             if (creature.hunger > creature.nibbleHungerLoss)
             {
-                // Get Edible component
-                Edible edible = other.gameObject.GetComponent<Edible>();
-
-                // Creature nibbles edible object
-                creature.Nibble(edible);
+                // If plant
+                if (other.gameObject.CompareTag("Plant"))
+                {
+                    other.gameObject.GetComponent<Plant>().Nibbled();
+                }
+                else if (other.gameObject.CompareTag("Corpse"))
+                {
+                    other.gameObject.GetComponent<Corpse>().Nibbled();
+                }
             }
         }
     }

@@ -52,6 +52,9 @@ public class Creature : MonoBehaviour
     // Romantic partner
     public Creature partner;
 
+    // Baby prefab
+    public GameObject babyPrefab;
+
     // Heart prefab
     public GameObject heartPrefab;
 
@@ -129,6 +132,8 @@ public class Creature : MonoBehaviour
                 Reproduce(partner);
             }
         }
+
+        _timeSinceLastReproduction += Time.deltaTime;
     }
 
     // Nibble an Edible
@@ -203,6 +208,8 @@ public class Creature : MonoBehaviour
     // Proposition another creature
     public void Proposition(Creature otherCreature)
     {
+        _idling = true;
+
         // Heart emote
         HeartEmote();
 
@@ -211,8 +218,6 @@ public class Creature : MonoBehaviour
 
         // Set the target location to other creature position
         UpdateTargetLocation(otherCreature.transform.position);
-
-        _idling = true;
 
         // Check if other creature is ready to reproduce
         if (otherCreature.ReadyToReproduce())
@@ -297,6 +302,12 @@ public class Creature : MonoBehaviour
         _timeSinceLastReproduction = 0;
         otherCreature._timeSinceLastReproduction = 0;
 
+        // Instantiate baby
+        var baby = Instantiate(
+            babyPrefab,
+            transform.position + new Vector3(0, -0.4f, 0), Quaternion.identity
+        );
+
         // Wait for 1 seconds
         Invoke(nameof(StopReproducing), 1);
     }
@@ -324,5 +335,11 @@ public class Creature : MonoBehaviour
 
         // Print notDead
         Debug.Log("notDead: " + notDead);
+    }
+
+    // IsIdle
+    public bool IsIdle()
+    {
+        return _idling;
     }
 }

@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2053254120881516146}
   - component: {fileID: 4904603236319464732}
   - component: {fileID: 1742424248650496035}
+  - component: {fileID: 1159719711795561087}
   m_Layer: 0
   m_Name: Creature
   m_TagString: Creature
@@ -66,6 +67,7 @@ MonoBehaviour:
   incubationPeriod: 15
   reproductionMaxDistance: 0.5
   partner: {fileID: 0}
+  babyPrefab: {fileID: 763761356179019653, guid: 725583d200703323ab764ec91e3ba507, type: 3}
   heartPrefab: {fileID: 4645024256981364194, guid: e82c3843323cba0cfb31c8a8f3ebd640, type: 3}
 --- !u!212 &3749503095740664960
 SpriteRenderer:
@@ -269,6 +271,33 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!50 &1159719711795561087
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3369614858143274295}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &5118284766461921352
 GameObject:
   m_ObjectHideFlags: 0

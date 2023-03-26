@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace DefaultNamespace
 {
@@ -46,6 +45,12 @@ namespace DefaultNamespace
             {
                 nutrition += recoveryRate * Time.deltaTime;
             }
+        }
+
+        // Nibbleable 
+        public bool Nibbleable()
+        {
+            return nutrition > 0;
         }
     }
 }
