@@ -11,6 +11,8 @@ public class Controller : MonoBehaviour
     // Number of creatures
     public int numCreatures = 0;
 
+    public bool cannibalism = true;
+
     // Creature prefab
     public GameObject creaturePrefab;
 
