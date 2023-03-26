@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class CreditButton : MonoBehaviour
+public class SceneButtonManager : MonoBehaviour
 {
     // Menu 0 
     // MainScene 1
