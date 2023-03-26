@@ -1,3 +1,4 @@
+using DefaultNamespace;
 using Pathfinding;
 using UnityEngine;
 
@@ -32,6 +33,9 @@ public class Creature : MonoBehaviour
 
     public bool notDead;
 
+    // Idling
+    public bool idling = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,7 +65,7 @@ public class Creature : MonoBehaviour
         return (Vector3)randomNode.position;
     }
 
-    void UpdateTargetLocation(Vector3 targetLocation)
+    public void UpdateTargetLocation(Vector3 targetLocation)
     {
         // Set the target location to a random location
         aiDestinationSetter.target.position = targetLocation;
@@ -70,7 +74,7 @@ public class Creature : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (notDead)
+        if (notDead && !idling)
         {
             // // Check if the target location has been reached
             if (Vector3.Distance(transform.position, aiDestinationSetter.target.position) < targetBuffer)
@@ -90,25 +94,39 @@ public class Creature : MonoBehaviour
         }
     }
 
-    public void NavigateToPlant(Plant plant)
+    // Nibble an Edible
+    public void Nibble(Edible edible)
     {
-        // Set the target location to the plant's position
-        UpdateTargetLocation(plant.transform.position);
-    }
+        // Set animation to Eating
+        animator.SetBool("Eating", true);
 
-    public void NibblePlant(Plant plant)
-    {
-        // Nibble the plant
-        plant.Nibbled();
+        // Nibble the edible
+        edible.Nibbled();
 
         // Reduce hunger
         hunger -= nibbleHungerLoss;
 
-        // Nibbled plant
-        Debug.Log("Nibbled plant");
+        // Nibbled edible
+        Debug.Log("Nibbled edible");
 
-        // Set the target location to a random location
-        UpdateTargetLocation(GetRandomLocation());
+        // Set the target location to edible position
+        UpdateTargetLocation(edible.transform.position);
+
+        // Idle
+        idling = true;
+
+        // Wait for 1 seconds
+        Invoke("StopEating", 1);
+    }
+
+    // Stop eating
+    public void StopEating()
+    {
+        // Set animation to Eating
+        animator.SetBool("Eating", false);
+
+        // Stop idling
+        idling = false;
     }
 
     // Freeze the creature

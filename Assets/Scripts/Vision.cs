@@ -8,6 +8,8 @@ public class Vision : MonoBehaviour
     // Navigate to plant hunger threshold
     public float navigateToPlantHungerThreshold = 30;
 
+    public float navigateToCorpseHungerThreshold = 70;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,20 +25,23 @@ public class Vision : MonoBehaviour
     // Called when the vision collider enters another collider
     void OnTriggerStay2D(Collider2D other)
     {
-        // If the other collider is a plant nibble it
-        if (other.gameObject.CompareTag("Plant"))
+        // If the other collider edible nibble it
+        if (other.gameObject.CompareTag("Edible"))
         {
-            // Print if collision with plant
-            Debug.Log("I can see a plant!");
-
             // If hunger greater than 30 then navigate to plant
             if (creature.hunger > navigateToPlantHungerThreshold)
             {
-                Debug.Log("I'm hungry! Navigate to plant!");
                 Plant plant = other.gameObject.GetComponent<Plant>();
 
-                // Call NavigateToPlant on parent
-                creature.NavigateToPlant(plant);
+                // Navigate creature to plant
+                creature.UpdateTargetLocation(plant.transform.position);
+            }
+            else if (creature.hunger > navigateToCorpseHungerThreshold)
+            {
+                Corpse corpse = other.gameObject.GetComponent<Corpse>();
+
+                // Navigate creature to corpse
+                creature.UpdateTargetLocation(corpse.transform.position);
             }
         }
     }

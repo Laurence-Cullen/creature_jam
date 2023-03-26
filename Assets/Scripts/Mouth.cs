@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
 
 public class Mouth : MonoBehaviour
@@ -20,16 +19,17 @@ public class Mouth : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-        // If the other collider is a plant nibble it
-        if (other.gameObject.CompareTag("Plant"))
+        // If the other collider is edible nibble it
+        if (other.gameObject.CompareTag("Edible"))
         {
-            // If parent hunger greater than nibbleHungerLoss then nibble
+            // If creature hunger greater than nibbleHungerLoss then nibble
             if (creature.hunger > creature.nibbleHungerLoss)
             {
-                Plant plant = other.gameObject.GetComponent<Plant>();
+                // Get Edible component
+                Edible edible = other.gameObject.GetComponent<Edible>();
 
-                // Call NibblePlant on parent
-                creature.NibblePlant(plant);
+                // Creature nibbles edible object
+                creature.Nibble(edible);
             }
         }
     }

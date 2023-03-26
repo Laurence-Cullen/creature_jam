@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 503565292586218049}
   m_Layer: 0
   m_Name: Plant
-  m_TagString: Plant
+  m_TagString: Edible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,15 +99,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cce53aa5802008e79a00f34d81d2ac5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  health: 100
+  nutrition: 100
+  maxNutrition: 100
+  recoveryRate: 2
   nibbleAmount: 10
   spriteRenderer: {fileID: 0}
   fullHealthSprite: {fileID: 1330664561, guid: d8c33e042c41d751d82da8fc2849d4af, type: 3}
   slightlyNibbledSprite: {fileID: 1512506084, guid: d8c33e042c41d751d82da8fc2849d4af, type: 3}
   nibbledSprite: {fileID: 1578818269, guid: d8c33e042c41d751d82da8fc2849d4af, type: 3}
   veryNibbledSprite: {fileID: 881751064, guid: d8c33e042c41d751d82da8fc2849d4af, type: 3}
-  healthRecoveryRate: 5
 --- !u!50 &2130616379260513292
 Rigidbody2D:
   serializedVersion: 4
@@ -171,7 +171,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 9.47, y: 11.550294}
+    oldSize: {x: 1.18375, y: 1.4437867}
     newSize: {x: 9.47, y: 11.550294}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

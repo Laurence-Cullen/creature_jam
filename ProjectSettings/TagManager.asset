@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Plant
   - Water
+  - Edible
   layers:
   - Default
   - TransparentFX
