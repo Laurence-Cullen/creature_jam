@@ -38,7 +38,7 @@ Transform:
   - {fileID: 3338201658752570193}
   - {fileID: 2734371636484981679}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2079876284858562133
 MonoBehaviour:
@@ -59,8 +59,16 @@ MonoBehaviour:
   maxHunger: 100
   hungerGain: 10
   nibbleHungerLoss: 10
+  reproductionHungerThreshold: 50
+  reproductionHungerCost: 30
   targetBuffer: 0.2
   notDead: 0
+  idling: 0
+  incubationPeriod: 15
+  timeSinceLastReproduction: 0
+  reproductionMaxDistance: 0.5
+  partner: {fileID: 0}
+  heartPrefab: {fileID: 4645024256981364194, guid: e82c3843323cba0cfb31c8a8f3ebd640, type: 3}
 --- !u!212 &3749503095740664960
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -344,6 +352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   navigateToPlantHungerThreshold: 30
+  navigateToCorpseHungerThreshold: 70
 --- !u!1 &8349279847727712219
 GameObject:
   m_ObjectHideFlags: 0

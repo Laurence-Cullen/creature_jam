@@ -52,6 +52,9 @@ public class Creature : MonoBehaviour
     // Romantic partner
     public Creature partner;
 
+    // Heart prefab
+    public GameObject heartPrefab;
+
     private static readonly int Propositioning = Animator.StringToHash("Propositioning");
     private static readonly int Eating = Animator.StringToHash("Eating");
     private static readonly int Dead = Animator.StringToHash("Dead");
@@ -165,15 +168,43 @@ public class Creature : MonoBehaviour
     // Accept a proposition
     public void AcceptProposition(Creature otherCreature)
     {
+        HeartEmote();
+
         idling = true;
         // Set the target location to other creature position
         UpdateTargetLocation(otherCreature.transform.position);
         partner = otherCreature;
     }
 
+    // Heart emote
+    public void HeartEmote()
+    {
+        // Create heart prefab above creature and destroy after 1.5 seconds
+        var heart = Instantiate(
+            heartPrefab,
+            transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity
+        );
+        Destroy(heart, 1.5f);
+    }
+
+    // Big heart emote
+    public void BigHeartEmote()
+    {
+        // Create heart prefab above creature and destroy after 1.5 seconds
+        var heart = Instantiate(
+            heartPrefab,
+            transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity
+        );
+        heart.transform.localScale = new Vector3(2, 2, 2);
+        Destroy(heart, 1.5f);
+    }
+
     // Proposition another creature
     public void Proposition(Creature otherCreature)
     {
+        // Heart emote
+        HeartEmote();
+
         // Set animation to Reproducing
         animator.SetBool(Propositioning, true);
 
@@ -248,7 +279,10 @@ public class Creature : MonoBehaviour
     // Reproduce
     public void Reproduce(Creature otherCreature)
     {
-        // Set animation to Reproducing
+        // Big heart emote
+        BigHeartEmote();
+
+        // Set animation to idling
         animator.SetBool(Reproducing, true);
 
         // Set the target location to position of partner
