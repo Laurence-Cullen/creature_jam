@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Controller : MonoBehaviour
 {
@@ -6,7 +7,7 @@ public class Controller : MonoBehaviour
     public int numPlants = 0;
 
     // Number of creatures
-    public int numCreatures = 0;
+    public int numCreatures = 1;
 
     public bool cannibalism = true;
 
@@ -25,6 +26,10 @@ public class Controller : MonoBehaviour
         // Pause the game
         Time.timeScale = 0;
         persistent = GameObject.FindWithTag("Persistent").GetComponent<Persistent>();
+        persistent.time = 0;
+
+        // Populate map with plants and creatures
+        PopulateMap();
     }
 
     // Clear all plants, creatures, babies and corpses from the map
@@ -66,6 +71,31 @@ public class Controller : MonoBehaviour
         foreach (GameObject corpse in corpses)
         {
             Destroy(corpse);
+        }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        persistent.time += Time.deltaTime;
+
+        // Count number of Creatures every 2 seconds
+        if (persistent.time % 2 < Time.deltaTime)
+        {
+            int livingCreatures = GameObject.FindGameObjectsWithTag("Creature").Length;
+
+            // If persistent.time is greater than 60 seconds then set win to true
+            if (persistent.time > 60)
+            {
+                persistent.win = true;
+            }
+
+            // If no living creatures then load scene 2 and set win to false in 2 seconds
+            if (livingCreatures == 0)
+            {
+                persistent.win = false;
+                SceneManager.LoadScene(2);
+            }
         }
     }
 

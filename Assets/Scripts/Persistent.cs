@@ -6,6 +6,9 @@ public class Persistent : MonoBehaviour
     // Player name
     public string playerName = "Player";
 
+    // Win status
+    public bool win = false;
+
     // Name card Legacy text component
     public Text nameCard;
 

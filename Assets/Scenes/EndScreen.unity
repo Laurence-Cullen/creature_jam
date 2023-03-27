@@ -658,6 +658,7 @@ GameObject:
   - component: {fileID: 543157462}
   - component: {fileID: 543157465}
   - component: {fileID: 543157464}
+  - component: {fileID: 543157466}
   m_Layer: 5
   m_Name: InitialCreaturesDisplay
   m_TagString: Untagged
@@ -782,6 +783,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 543157461}
   m_CullTransparentMesh: 1
+--- !u!114 &543157466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543157461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1d00bf5fb2c860ee95780dc740a601b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  persistent: {fileID: 0}
+  text: {fileID: 543157464}
 --- !u!1 &568203206
 GameObject:
   m_ObjectHideFlags: 0
@@ -1149,9 +1164,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: All the creatures in your care have starved to death and the results of
-    your experiment are inconclusive. If your sponsors hear about this they will
-    be forced to reconsider the funding for your research.
+  m_text: The results of your experiment are inconclusive. If your sponsors hear
+    about this they will be forced to reconsider the funding for your research.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ce0cf354be7df890191dae15af0a3be0, type: 2}
   m_sharedMaterial: {fileID: -9153884748781398133, guid: ce0cf354be7df890191dae15af0a3be0, type: 2}
@@ -2511,6 +2525,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1619587228}
   m_CullTransparentMesh: 1
+--- !u!1001 &1796891551
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2730666092296927478, guid: f2b66ffcd22981f8e9f0071f4ff5c7f7, type: 3}
+      propertyPath: m_Name
+      value: MenuMusic
+      objectReference: {fileID: 0}
+    - target: {fileID: 4573595777015672992, guid: f2b66ffcd22981f8e9f0071f4ff5c7f7, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4573595777015672992, guid: f2b66ffcd22981f8e9f0071f4ff5c7f7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 597
+      objectReference: {fileID: 0}
+    - target: {fileID: 4573595777015672992, guid: f2b66ffcd22981f8e9f0071f4ff5c7f7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 361
+      objectReference: {fileID: 0}
+    - target: {fileID: 4573595777015672992, guid: f2b66ffcd22981f8e9f0071f4ff5c7f7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.176462
+      objectReference: {fileID: 0}
+    - target: {fileID: 4573595777015672992, guid: f2b66ffcd22981f8e9f0071f4ff5c7f7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4573595777015672992, guid: f2b66ffcd22981f8e9f0071f4ff5c7f7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4573595777015672992, guid: f2b66ffcd22981f8e9f0071f4ff5c7f7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4573595777015672992, guid: f2b66ffcd22981f8e9f0071f4ff5c7f7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4573595777015672992, guid: f2b66ffcd22981f8e9f0071f4ff5c7f7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4573595777015672992, guid: f2b66ffcd22981f8e9f0071f4ff5c7f7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4573595777015672992, guid: f2b66ffcd22981f8e9f0071f4ff5c7f7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f2b66ffcd22981f8e9f0071f4ff5c7f7, type: 3}
 --- !u!1 &1867594630
 GameObject:
   m_ObjectHideFlags: 0
@@ -2637,9 +2712,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8941ab05197b0f87ad792de3213e19d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  persistent: {fileID: 0}
   win: {fileID: 128009706}
   lose: {fileID: 36089395}
-  gameWon: 0
 --- !u!114 &1915775332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2652,9 +2727,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8941ab05197b0f87ad792de3213e19d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  persistent: {fileID: 0}
   win: {fileID: 0}
   lose: {fileID: 0}
-  gameWon: 0
 --- !u!1 &1946878082
 GameObject:
   m_ObjectHideFlags: 0

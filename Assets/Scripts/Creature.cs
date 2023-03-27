@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class Creature : MonoBehaviour
 {
+    // Random AudioClip 
+    public AudioClip[] randomNoises;
+
     // Animator
     public Animator animator;
 
@@ -90,7 +93,22 @@ public class Creature : MonoBehaviour
         aiDestinationSetter.target = _destination;
 
         UpdateTargetLocation(Controller.GetRandomWalkableLocation());
+
+        // Between every 5 and 10 seconds, play a random noise
+        InvokeRepeating(nameof(PlayRandomNoise), Random.Range(5, 10), Random.Range(5, 10));
     }
+
+
+    // Play a random noise
+    void PlayRandomNoise()
+    {
+        // Get a random AudioClip from the list
+        AudioClip randomNoise = randomNoises[Random.Range(0, randomNoises.Length)];
+
+        // Play the random AudioClip
+        AudioSource.PlayClipAtPoint(randomNoise, transform.position);
+    }
+
 
     public void UpdateTargetLocation(Vector3 targetLocation)
     {

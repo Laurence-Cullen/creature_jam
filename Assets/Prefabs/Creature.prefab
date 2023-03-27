@@ -53,9 +53,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f4033efe46fa4d908491aba59eadc83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  randomNoises:
+  - {fileID: 8300000, guid: 0a70df7263c2439af81ef726ebf0dd5b, type: 3}
+  - {fileID: 8300000, guid: 2aed2da72581f82759cf16fe8bebc92b, type: 3}
   animator: {fileID: 1742424248650496035}
+  persistent: {fileID: 0}
   aiDestinationSetter: {fileID: 7878104661811622701}
   corpsePrefab: {fileID: 8562486475539731680, guid: c27ef7f16c2bc4d7fa3f47a728d1f4a9, type: 3}
+  generation: 1
   hunger: 20
   maxHunger: 100
   hungerGain: 5

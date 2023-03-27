@@ -2,21 +2,22 @@ using UnityEngine;
 
 public class WinLossManager : MonoBehaviour
 {
+    // Persistent
+    public Persistent persistent;
+
     // Win GameObject
     public GameObject win;
 
     // Lose GameObject
     public GameObject lose;
 
-    // Game won
-    public bool gameWon = false;
-
-
     // Start is called before the first frame update
     void Start()
     {
+        persistent = GameObject.FindWithTag("Persistent").GetComponent<Persistent>();
+
         // If game won disable lose
-        if (gameWon)
+        if (persistent.win)
         {
             lose.SetActive(false);
         }
@@ -24,10 +25,5 @@ public class WinLossManager : MonoBehaviour
         {
             win.SetActive(false);
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
     }
 }

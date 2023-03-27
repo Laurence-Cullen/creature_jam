@@ -36,10 +36,6 @@ public class Edible : MonoBehaviour
     public void Nibbled()
     {
         nutrition -= nibbleAmount;
-        if (nutrition <= 0)
-        {
-            Destroy(gameObject);
-        }
     }
 
     // Recover nutrition

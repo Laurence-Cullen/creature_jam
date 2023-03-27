@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class Baby : MonoBehaviour
 {
+    // Maturity sound
+    public AudioClip maturitySound;
+
     // Age of baby
     private float _age;
 
@@ -37,8 +40,13 @@ public class Baby : MonoBehaviour
     // Grow into adult
     void GrowIntoAdult()
     {
+        // Play maturity sound
+        var position = transform.position;
+
+        AudioSource.PlayClipAtPoint(maturitySound, position);
+
         // Instantiate adult
-        GameObject adult = Instantiate(adultPrefab, transform.position, Quaternion.identity);
+        GameObject adult = Instantiate(adultPrefab, position, Quaternion.identity);
 
         // Set generation
         adult.GetComponent<Creature>().generation = generation;
