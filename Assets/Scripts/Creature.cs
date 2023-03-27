@@ -73,7 +73,7 @@ public class Creature : MonoBehaviour
     // private static readonly int FacingLeft = Animator.StringToHash("FacingLeft");
     private static readonly int Idling = Animator.StringToHash("Idling");
 
-    private GameObject _destinationObject = new GameObject();
+    private GameObject _destinationObject;
 
     // Cannibalistic
     public bool cannibalistic = true;
@@ -337,6 +337,9 @@ public class Creature : MonoBehaviour
         persistent.generations = Mathf.Max(persistent.generations, baby.GetComponent<Baby>().generation);
 
         persistent.creaturesBorn++;
+
+        // Set baby cannibalism
+        baby.GetComponent<Baby>().cannibalistic = cannibalistic;
 
         // Wait for 1 seconds
         Invoke(nameof(StopReproducing), 1);

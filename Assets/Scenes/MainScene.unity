@@ -2285,7 +2285,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1677685436684621998, guid: fca56cf6e5d20724897f4aedac755465, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: CaniballismToggle, Assembly-CSharp
+      value: CannibalismToggle, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1677685436684621998, guid: fca56cf6e5d20724897f4aedac755465, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -2632,7 +2632,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 641de175aeea10231b8d3e84f44dc6e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
+  controller: {fileID: 7722821766100509775}
 --- !u!1001 &7722821766100509774
 PrefabInstance:
   m_ObjectHideFlags: 0

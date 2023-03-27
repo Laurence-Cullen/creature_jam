@@ -9,7 +9,7 @@ public class Controller : MonoBehaviour
     // Number of creatures
     public int numCreatures = 1;
 
-    public bool cannibalism = true;
+    private bool _cannibalism = true;
 
     // Creature prefab
     public GameObject creaturePrefab;
@@ -19,6 +19,26 @@ public class Controller : MonoBehaviour
 
     // Persistent
     public Persistent persistent;
+
+    // Set cannibalism
+    public void SetCannibalism(bool value)
+    {
+        _cannibalism = value;
+
+        persistent.cannibalism = value;
+
+        // Get all GameObjects with tag "Creature"
+        GameObject[] creatures = GameObject.FindGameObjectsWithTag("Creature");
+
+        // Set cannibalism to value
+        foreach (GameObject creature in creatures)
+        {
+            creature.GetComponent<Creature>().cannibalistic = value;
+        }
+
+        //Print all creatures set to cannibalism
+        Debug.Log("All creatures set to cannibalism: " + value);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -103,7 +123,7 @@ public class Controller : MonoBehaviour
     public void PopulateMap()
     {
         persistent.initialCreatures = numCreatures;
-        persistent.cannibalism = cannibalism;
+        persistent.cannibalism = _cannibalism;
         persistent.numPlants = numPlants;
 
         // Spawn plants
@@ -129,11 +149,13 @@ public class Controller : MonoBehaviour
         for (int i = 0; i < numCreatures; i++)
         {
             // Instantiate creature prefab at random location
-            Instantiate(
+            GameObject creature = Instantiate(
                 creaturePrefab,
                 AddNoise(GetRandomWalkableLocation(), 0.1f),
                 Quaternion.identity
             );
+
+            creature.GetComponent<Creature>().cannibalistic = _cannibalism;
         }
     }
 

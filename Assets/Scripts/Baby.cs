@@ -5,6 +5,9 @@ public class Baby : MonoBehaviour
     // Maturity sound
     public AudioClip maturitySound;
 
+    // Canibalism
+    public bool cannibalistic = false;
+
     // Age of baby
     private float _age;
 
@@ -50,6 +53,9 @@ public class Baby : MonoBehaviour
 
         // Set generation
         adult.GetComponent<Creature>().generation = generation;
+
+        // Set cannibalism
+        adult.GetComponent<Creature>().cannibalistic = cannibalistic;
 
         // Destroy baby
         Destroy(gameObject);

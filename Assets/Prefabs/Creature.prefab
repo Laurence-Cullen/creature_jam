@@ -65,8 +65,8 @@ MonoBehaviour:
   maxHunger: 100
   hungerGain: 5
   nibbleHungerLoss: 10
-  reproductionHungerThreshold: 50
-  reproductionHungerCost: 30
+  reproductionHungerThreshold: 75
+  reproductionHungerCost: 5
   targetBuffer: 0.2
   notDead: 0
   incubationPeriod: 15
@@ -74,6 +74,7 @@ MonoBehaviour:
   partner: {fileID: 0}
   babyPrefab: {fileID: 763761356179019653, guid: 725583d200703323ab764ec91e3ba507, type: 3}
   heartPrefab: {fileID: 4645024256981364194, guid: e82c3843323cba0cfb31c8a8f3ebd640, type: 3}
+  cannibalistic: 0
 --- !u!212 &3749503095740664960
 SpriteRenderer:
   m_ObjectHideFlags: 0
