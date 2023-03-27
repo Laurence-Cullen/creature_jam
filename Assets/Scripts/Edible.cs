@@ -1,62 +1,59 @@
 using UnityEngine;
 
-namespace DefaultNamespace
+public class Edible : MonoBehaviour
 {
-    public class Edible : MonoBehaviour
+    // Set nutrition value
+    public float nutrition;
+
+    // Max nutrition value
+    public float maxNutrition = 100;
+
+    // Recovery rate
+    public float recoveryRate;
+
+    // Nibble amount
+    public float nibbleAmount = 10;
+
+    // Create constructor
+    public Edible()
     {
-        // Set nutrition value
-        public float nutrition;
+        nutrition = maxNutrition;
+    }
 
-        // Max nutrition value
-        public float maxNutrition = 100;
+    void Start()
+    {
+        nutrition = maxNutrition;
+    }
 
-        // Recovery rate
-        public float recoveryRate;
 
-        // Nibble amount
-        public float nibbleAmount = 10;
+    // Update
+    void Update()
+    {
+        RecoverNutrition();
+    }
 
-        // Create constructor
-        public Edible()
+    // Nibbled
+    public void Nibbled()
+    {
+        nutrition -= nibbleAmount;
+        if (nutrition <= 0)
         {
-            nutrition = maxNutrition;
+            Destroy(gameObject);
         }
+    }
 
-        void Start()
+    // Recover nutrition
+    public void RecoverNutrition()
+    {
+        if (nutrition < maxNutrition)
         {
-            nutrition = maxNutrition;
+            nutrition += recoveryRate * Time.deltaTime;
         }
+    }
 
-
-        // Update
-        void Update()
-        {
-            RecoverNutrition();
-        }
-
-        // Nibbled
-        public void Nibbled()
-        {
-            nutrition -= nibbleAmount;
-            if (nutrition <= 0)
-            {
-                Destroy(gameObject);
-            }
-        }
-
-        // Recover nutrition
-        public void RecoverNutrition()
-        {
-            if (nutrition < maxNutrition)
-            {
-                nutrition += recoveryRate * Time.deltaTime;
-            }
-        }
-
-        // Nibbleable 
-        public bool Nibbleable()
-        {
-            return nutrition > 0;
-        }
+    // Nibbleable 
+    public bool Nibbleable()
+    {
+        return nutrition > 0;
     }
 }

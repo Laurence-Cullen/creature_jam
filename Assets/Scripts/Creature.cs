@@ -1,4 +1,3 @@
-using DefaultNamespace;
 using Pathfinding;
 using UnityEngine;
 

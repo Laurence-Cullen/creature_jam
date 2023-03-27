@@ -11,8 +11,11 @@ public class Persistent : MonoBehaviour
 
     public float time = 0;
 
-    // Initial number of creatures
+    // Total number of creatures
     public int numCreatures = 10;
+
+    // Initial number of creatures
+    public int initialCreatures = 10;
 
     // Initial number of plants
     public int numPlants = 10;
@@ -46,7 +49,7 @@ public class Persistent : MonoBehaviour
     {
         // Reset stats
         numCreatures = 0;
-
+        initialCreatures = 0;
         creaturesBorn = 0;
         creaturesEaten = 0;
         creaturesDied = 0;

@@ -3,7 +3,7 @@ using UnityEngine;
 public class Controller : MonoBehaviour
 {
     // Plant density
-    public float numPlants = 0;
+    public int numPlants = 0;
 
     // Number of creatures
     public int numCreatures = 0;
@@ -25,11 +25,6 @@ public class Controller : MonoBehaviour
         // Pause the game
         Time.timeScale = 0;
         persistent = GameObject.FindWithTag("Persistent").GetComponent<Persistent>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
     }
 
     // Clear all plants, creatures, babies and corpses from the map
@@ -77,6 +72,10 @@ public class Controller : MonoBehaviour
     // Populate map with plants and creatures
     public void PopulateMap()
     {
+        persistent.initialCreatures = numCreatures;
+        persistent.cannibalism = cannibalism;
+        persistent.numPlants = numPlants;
+
         // Spawn plants
         for (int i = 0; i < numPlants; i++)
         {
