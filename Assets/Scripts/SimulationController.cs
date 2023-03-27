@@ -16,11 +16,15 @@ public class Controller : MonoBehaviour
     // List of 5 plant prefabs
     public GameObject[] plantPrefabs;
 
+    // Persistent
+    public Persistent persistent;
+
     // Start is called before the first frame update
     void Start()
     {
         // Pause the game
         Time.timeScale = 0;
+        persistent = GameObject.FindWithTag("Persistent").GetComponent<Persistent>();
     }
 
     // Update is called once per frame
@@ -31,6 +35,8 @@ public class Controller : MonoBehaviour
     // Clear all plants, creatures, babies and corpses from the map
     public void ClearMap()
     {
+        persistent.ResetStats();
+
         // Get all GameObjects with tag "Plant"
         GameObject[] plants = GameObject.FindGameObjectsWithTag("Plant");
 

@@ -11,6 +11,9 @@ public class Baby : MonoBehaviour
     // Adult prefab
     public GameObject adultPrefab;
 
+    // Generation
+    public int generation = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,7 +38,10 @@ public class Baby : MonoBehaviour
     void GrowIntoAdult()
     {
         // Instantiate adult
-        Instantiate(adultPrefab, transform.position, Quaternion.identity);
+        GameObject adult = Instantiate(adultPrefab, transform.position, Quaternion.identity);
+
+        // Set generation
+        adult.GetComponent<Creature>().generation = generation;
 
         // Destroy baby
         Destroy(gameObject);

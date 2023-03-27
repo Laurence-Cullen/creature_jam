@@ -16,6 +16,9 @@ public class Creature : MonoBehaviour
     // Corpse prefab
     public GameObject corpsePrefab;
 
+    // Generation
+    public int generation = 1;
+
     // Hunger level
     public float hunger;
 
@@ -303,7 +306,14 @@ public class Creature : MonoBehaviour
         otherCreature._timeSinceLastReproduction = 0;
 
         // Instantiate baby
-        Instantiate(babyPrefab, transform.position, Quaternion.identity);
+        GameObject baby = Instantiate(babyPrefab, transform.position, Quaternion.identity);
+
+        // Set baby's generation to this creature's generation + 1
+        baby.GetComponent<Baby>().generation = generation + 1;
+
+        // Set persistent's generation to the maximum of the current generation and the baby's generation
+
+        persistent.generations = Mathf.Max(persistent.generations, baby.GetComponent<Baby>().generation);
 
         persistent.creaturesBorn++;
 
