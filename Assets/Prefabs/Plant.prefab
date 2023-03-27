@@ -108,7 +108,9 @@ MonoBehaviour:
   slightlyNibbledSprite: {fileID: 1512506084, guid: d8c33e042c41d751d82da8fc2849d4af, type: 3}
   nibbledSprite: {fileID: 1578818269, guid: d8c33e042c41d751d82da8fc2849d4af, type: 3}
   veryNibbledSprite: {fileID: 881751064, guid: d8c33e042c41d751d82da8fc2849d4af, type: 3}
-  dormancyPeriod: 20
+  dormancyPeriod: 30
+  dormant: 0
+  timeDormant: 0
 --- !u!50 &2130616379260513292
 Rigidbody2D:
   serializedVersion: 4

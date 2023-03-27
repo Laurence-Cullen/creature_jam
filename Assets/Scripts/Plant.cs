@@ -31,15 +31,15 @@ public class Plant : Edible
     void Update()
     {
         // Update sprite based on health
-        if (nutrition > 75)
+        if (nutrition >= 75)
         {
             spriteRenderer.sprite = fullHealthSprite;
         }
-        else if (nutrition > 50)
+        else if (nutrition >= 50)
         {
             spriteRenderer.sprite = slightlyNibbledSprite;
         }
-        else if (nutrition > 25)
+        else if (nutrition >= 25)
         {
             spriteRenderer.sprite = nibbledSprite;
         }
@@ -59,7 +59,7 @@ public class Plant : Edible
             {
                 // Leave dormancy
                 dormant = false;
-                nutrition = 30;
+                nutrition = 25;
                 timeDormant = 0;
             }
         }

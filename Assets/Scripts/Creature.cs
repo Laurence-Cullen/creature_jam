@@ -73,6 +73,11 @@ public class Creature : MonoBehaviour
     // private static readonly int FacingLeft = Animator.StringToHash("FacingLeft");
     private static readonly int Idling = Animator.StringToHash("Idling");
 
+    private GameObject _destinationObject = new GameObject();
+
+    // Cannibalistic
+    public bool cannibalistic = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -85,9 +90,8 @@ public class Creature : MonoBehaviour
         hunger = Random.Range(0, 50);
 
         notDead = true;
-
-        // TODO: Stop creating new game objects
-        _destination = new GameObject().transform;
+        _destinationObject = new GameObject();
+        _destination = _destinationObject.transform;
 
         // Create transform from random location
         aiDestinationSetter.target = _destination;
@@ -350,6 +354,8 @@ public class Creature : MonoBehaviour
 
     public void Kill()
     {
+        Destroy(_destinationObject);
+
         persistent.creaturesDied++;
 
         // Disable aiDestinationSetter

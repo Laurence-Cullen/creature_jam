@@ -10,5 +10,6 @@ public class CaniballismToggle : MonoBehaviour
     {
         // Set cannibalism to value
         controller.cannibalism = value;
+        controller.creaturePrefab.GetComponent<Creature>().cannibalistic = value;
     }
 }

@@ -57,7 +57,7 @@ public class Vision : MonoBehaviour
                     }
                 }
             }
-            else if (other.gameObject.CompareTag("Corpse"))
+            else if (other.gameObject.CompareTag("Corpse") && creature.cannibalistic)
             {
                 Corpse corpse = other.gameObject.GetComponent<Corpse>();
 

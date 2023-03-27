@@ -31,7 +31,7 @@ public class Mouth : MonoBehaviour
                 {
                     creature.NibblePlant(other.gameObject.GetComponent<Plant>());
                 }
-                else if (other.gameObject.CompareTag("Corpse"))
+                else if (other.gameObject.CompareTag("Corpse") && creature.cannibalistic)
                 {
                     creature.NibbleCorpse(other.gameObject.GetComponent<Corpse>());
                 }
