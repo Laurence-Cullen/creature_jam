@@ -89,6 +89,9 @@ public class Creature : MonoBehaviour
         // Randomise hunger between 0 and 50
         hunger = Random.Range(0, 50);
 
+        // Randomise _timeSinceLastReproduction between 0 and incubationPeriod / 2
+        _timeSinceLastReproduction = Random.Range(0, incubationPeriod / 2);
+
         notDead = true;
         _destinationObject = new GameObject();
         _destination = _destinationObject.transform;
